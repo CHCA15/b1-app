@@ -1,0 +1,109 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Restaurante <br />
+      Universitario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="back">
+  <ion-img
+    src="https://images.unsplash.com/photo-1665492095698-8ea8406cdf2a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80"
+    alt="Restaurante">
+  </ion-img>
+  <ion-item>
+    <h3>
+      Ingresa datos para el <br />
+      registro del restaurate
+    </h3>
+  </ion-item>
+
+  
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Documento</ion-label>
+        <ion-input type="number" [(ngModel)]="Documento" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="Nombre" required></ion-input>        
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo de usuario:</ion-label>
+        <ion-select [(ngModel)]="Usuario" required>
+          <ion-select-option value="estudiante">Estudiante</ion-select-option>
+          <ion-select-option value="docente">Docente</ion-select-option>
+          <ion-select-option value="administrativo">Administrativo</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Programas Academicos</ion-label>
+        <ion-select [(ngModel)]="Programas" required>
+          <ion-select-option value="Ing. Ambiental">Ing. Ambiental</ion-select-option>
+          <ion-select-option value="Ing. Sistemas">Ing. Sistemas</ion-select-option>
+          <ion-select-option value="Contaduria">Contaduria</ion-select-option>
+          <ion-select-option value="Administracion">Administracion</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>
+          Fecha de reserva:
+        </ion-label>          
+      </ion-item>
+      <ion-datetime></ion-datetime>
+
+          <ion-item>
+            <ion-label>Seleccionar comida:</ion-label>
+            <ion-select [(ngModel)]="tipoComida" required>
+              <ion-select-option value="desayuno">Desayuno</ion-select-option>
+              <ion-select-option value="almuerzo">Almuerzo</ion-select-option>
+              <ion-select-option value="cena">Cena</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="tipoComida === 'desayuno'">
+            <ion-label>Platos de desayuno:</ion-label>
+            <ion-select>
+              <ion-select-option value="pancakes">Pancakes x3<br />
+                $5000</ion-select-option>
+              <ion-select-option value="huevosRevueltos">Huevos Revuelto + pan<br />
+                $5000</ion-select-option>
+              <ion-select-option value="tostadas">Tostadas<br />
+                $1000</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="tipoComida === 'almuerzo'">
+            <ion-label>Platos de almuerzo:</ion-label>
+            <ion-select>
+              <ion-select-option value="arrozConPollo">Arroz con pollo<br />
+                $7000</ion-select-option>
+              <ion-select-option value="pescado">Pescado + yuca<br />
+                $12.000</ion-select-option>
+              <ion-select-option value="carneAsada">Carne asada + yuca<br />
+                $10.000</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="tipoComida === 'cena'">
+            <ion-label>Platos de cena:</ion-label>
+            <ion-select>
+              <ion-select-option value="sopa">Sopa <br />
+                $5000</ion-select-option>
+              <ion-select-option value="ensalada">Ensalada <br />
+                $5000</ion-select-option>
+              <ion-select-option value="pasta">Pasta + pan <br />
+                $6000</ion-select-option>
+            </ion-select>
+          </ion-item>
+          
+          <ion-button expand="full" type="submit" (click)="enviar()" [disabled]="!camposLlenos()"> Enviar </ion-button>
+    </ion-list>
+
+  
+
+</ion-content>
